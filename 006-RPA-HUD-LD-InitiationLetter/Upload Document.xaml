@@ -1,0 +1,515 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Upload_Document" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_strNoteTextUpload" Type="InArgument(x:String)" />
+    <x:Property Name="in_strModifiedFHAUpload" Type="InArgument(x:String)" />
+    <x:Property Name="CurrentRow" Type="InArgument(sd:DataRow)" />
+    <x:Property Name="in_strIntiationLetterExcelUpload" Type="InArgument(x:String)" />
+    <x:Property Name="in_strFolderFilePathUpload" Type="InArgument(x:String)" />
+    <x:Property Name="in_dtLDIDataUpload" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_strDocumentsPageURLUpload" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:Upload_Document.in_strNoteTextUpload>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Upload_Document.in_strNoteTextUpload>
+  <this:Upload_Document.in_strModifiedFHAUpload>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Upload_Document.in_strModifiedFHAUpload>
+  <this:Upload_Document.in_strIntiationLetterExcelUpload>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Upload_Document.in_strIntiationLetterExcelUpload>
+  <this:Upload_Document.in_strFolderFilePathUpload>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Upload_Document.in_strFolderFilePathUpload>
+  <this:Upload_Document.in_dtLDIDataUpload>
+    <InArgument x:TypeArguments="sd:DataTable" />
+  </this:Upload_Document.in_dtLDIDataUpload>
+  <this:Upload_Document.in_strDocumentsPageURLUpload>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Upload_Document.in_strDocumentsPageURLUpload>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1356,3722</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Upload_Document_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities.Business</x:String>
+      <x:String>UiPath.Platform.Triggers</x:String>
+      <x:String>UiPath.Platform.Triggers.Scope</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.Excel.Helpers</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Upload_Document" sap:VirtualizedContainerService.HintSize="1366,3657" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Assign DisplayName="Assign 'DateTime'" sap:VirtualizedContainerService.HintSize="1304,81" sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Object">[CurrentRow("Uploaded")]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[DateTime.Now.ToString("yyyy/MM/dd/HH/mm/ss")]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: Loan &gt; Documents" sap:VirtualizedContainerService.HintSize="1304,3425" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="Never" ScopeGuid="c303e276-0eb8-4b3b-9387-548428848235" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence sap:VirtualizedContainerService.HintSize="1270,3208" sap2010:WorkflowViewState.IdRef="Sequence_28">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1208,3093" sap2010:WorkflowViewState.IdRef="Sequence_2">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Upload'" sap:VirtualizedContainerService.HintSize="1146,157" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="c303e276-0eb8-4b3b-9387-548428848235" Version="V3">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/forms/loans/loan_documents.aspx" CvElementArea="256, 426, 77, 35" CvTextArea="270, 436, 47, 16" CvTextArgument="Upload" CvType="Button" DesignTimeRectangle="254, 423, 83, 40" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl aaname=' Record Note Document Create Date Created By' tableRow='1' tag='TABLE' /&gt;&lt;webctrl name='ctl00$ctl00$MainContent$ContentPlaceHolder1$ucLoanDocuments$btnU*' tableRow='1' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname=' Record Note Document Create Date Created By' tag='TABLE' /&gt;&lt;webctrl name='ctl00$ctl00$MainContent$ContentPlaceHolder1$ucLoanDocuments$btnU*' type='image' tag='INPUT' class='' aaname='' /&gt;" Guid="5f97e2ba-8855-4e00-838b-b2f38c84c067" InformativeScreenshot="49d07edd23d794146ecacc9bdb08ce4f.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Loan &amp;gt; Documents' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target CvTextArea="256, 399, 115, 13" CvTextArgument="Loan Documents" CvType="Text" DesignTimeRectangle="257, 390, 1639, 29" ElementType="Text" FriendlyName="'Loan Documents'" FullSelectorArgument="&lt;webctrl aaname=' Record Note Document Create Date Created By' tableRow='1' tag='TABLE' /&gt;&lt;webctrl class='hermit-subHeading' tableRow='1' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname=' Record Note Document Create Date Created By' tag='TABLE' /&gt;&lt;webctrl class='hermit-subHeading' type='' tag='DIV' aaname='Loan Documents' check:innerText='Loan Documents' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAABmsAAAAhCAYAAAA2yZ9FAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAOESURBVHhe7d3BUeMwGIDR1MgM/TAMBaQFDkkHtAA3muCQMrxxLFmybOM4ZBDJvjfzHzaOJRmO35jdNAAAAAAAAFQj1gAAAAAAAFQk1gAAAAAAAFQk1gAAAAAAAFQk1gAAAAAAAFQk1gAAAAAAAFQk1gAAAAAAAFQk1gAAAAAAAFQk1gAAAAAAAFQk1gAAAAAAAFQk1gAAAAAAAFQk1gAAAAAAAFQk1gAAAAAAAFSUxZr35nWzaZ42L81n+OQv+HxuzzQxz+/hG/fu0Lw9PjRvX+GfAAAAAADAXbndWNPO4645hO/dpzbUtM8q1gAAAAAAwL1aH2u+ds02DyblGy4fL+naafL10h5v+4f0nW/ekomx5vUjfHAS19k0232Wa5bO1sePMHnsifdmnx3CGbu9s3CyT8/Y7Z+vW/z8ijPl543rb/e7/nlSmCnOevped2+8r5//5i0jAAAAAAC4P+tiTRlD4sTAMXe9jwkpspQzjDHJdKw5ilEorr10ton4Mbh+dqwp56HZlp8vnCk+yyi6xDmdYSbWjGJYdg0AAAAAALg5q2JNDCcpDKSgMBlbRgEkxZr4/fGaQ7Oxplh78WwxcvRnidfDmywrYk3cI+7Z31PsMby/FZ6/uN7f38ed+DsoztgKe4gzAAAAAABwH1bEmpnrk/EgRZlBjJhaYyE+nBdrls8Ww8hs5Dg71qRwMlpzJiCNpzvn+Exxj/gcE7Gm/NkeZ/SzAQAAAAAAbsaKWFOGhCCPLWXwGAWQK8aacF/3J8eWz3ZJrBnufc1Y061xWawJ4l5x/L81AAAAAABwk676Z9BG8SEGlavHmuG+raWz9WfJ9h6s3cePeD29wdLtMQ4nS7EmXh+ePflRrOkt/94AAAAAAIC/ayLWTE0IAeXbHHGKODF3/SexZnL6dY8WzpbCx9z1+ee/NNbMnim8BXN+rEn3zf6MvVkDAAAAAAA3aV2saZUBYhAJhnGhjRxdbImB44qxZipOfHu2VhlssnO0+rdvjvO4az5DGLk41rTKM2XXlmPNUX6m8DyjYJPvBwAAAAAA3JQs1gAAAAAAAPDbxBoAAAAAAICKxBoAAAAAAICKxBoAAAAAAICKxBoAAAAAAICKxBoAAAAAAICKxBoAAAAAAICK+ljztNkYY4wxxhhjjDHGGGOMMcaYX5rImzUAAAAAAAAViTUAAAAAAADVNM0/JW+6/5zxiwMAAAAASUVORK5CYII=" SearchSteps="Selector, FuzzySelector" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NClick.Target>
+              </uix:NClick>
+              <ui:RetryScope DisplayName="Retry Scope: Select Item 'Insurance Loss Draft'" sap:VirtualizedContainerService.HintSize="1146,52" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="3" RetryInterval="00:00:01">
+                <ui:RetryScope.ActivityBody>
+                  <ActivityAction>
+                    <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="450,268" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <uix:NSelectItem DelayAfter="1" DisplayName="Select Item 'Document Type'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NSelectItem_1" Item="Insurance Loss Draft" ScopeIdentifier="c303e276-0eb8-4b3b-9387-548428848235" Version="V3">
+                        <uix:NSelectItem.Items>
+                          <scg:List x:TypeArguments="x:String" Capacity="50">
+                            <x:String>1003-1009</x:String>
+                            <x:String>1st Mortgage</x:String>
+                            <x:String>1st Note</x:String>
+                            <x:String>2nd Mortgage</x:String>
+                            <x:String>2nd Note</x:String>
+                            <x:String>3rd Party Authorization (TPA)</x:String>
+                            <x:String>Appraisal</x:String>
+                            <x:String>Bankruptcy-Chapter 13</x:String>
+                            <x:String>Bankruptcy-Chapter 7</x:String>
+                            <x:String>Calculation Worksheets</x:String>
+                            <x:String>Cash Mgmt Correspondence</x:String>
+                            <x:String>Certified Return Receipts</x:String>
+                            <x:String>Claim Type 20 - Demand Assignment</x:String>
+                            <x:String>Claim Type 21 - DIL/FCL</x:String>
+                            <x:String>Claim Type 22 - Assignment</x:String>
+                            <x:String>Claim Type 23 - Short Sale/Mtgee Sale (Pre-Fcl)</x:String>
+                            <x:String>Claim Type 24 - HECM Supplemental</x:String>
+                            <x:String>Collateral Package</x:String>
+                            <x:String>Compliance Package</x:String>
+                            <x:String>Consent of Lienholder Package</x:String>
+                            <x:String>Correspondence</x:String>
+                            <x:String>Counseling Certificate</x:String>
+                            <x:String>Death Certificate</x:String>
+                            <x:String>Default</x:String>
+                            <x:String>Due &amp; Payable</x:String>
+                            <x:String>Due &amp; Payable Notice Sent to Borrower</x:String>
+                            <x:String>Due &amp; Payable Request Package</x:String>
+                            <x:String>Due &amp; Payable with HUD Approval</x:String>
+                            <x:String>Escrow</x:String>
+                            <x:String>Extension</x:String>
+                            <x:String>Final Truth in Lending</x:String>
+                            <x:String>FNMA Submission Form</x:String>
+                            <x:String>Foreclosure</x:String>
+                            <x:String>HOA</x:String>
+                            <x:String>HUD Advance Package</x:String>
+                            <x:String>HUD Forms</x:String>
+                            <x:String>Indemnification Agreement</x:String>
+                            <x:String>Inspection</x:String>
+                            <x:String>Insurance</x:String>
+                            <x:String>Insurance Loss Draft</x:String>
+                            <x:String>Legal</x:String>
+                            <x:String>Loan Agreement</x:String>
+                            <x:String>Loss Mitigation-Deed in Lieu</x:String>
+                            <x:String>Loss Mitigation-Family Sale Pending</x:String>
+                            <x:String>Loss Mitigation-Pre-Foreclosure</x:String>
+                            <x:String>Loss Mitigation-Short Sale</x:String>
+                            <x:String>Marriage Certificate</x:String>
+                            <x:String>Misc. Loan Documents</x:String>
+                            <x:String>Missed Payment Notice Letter</x:String>
+                            <x:String>Mortgage Insurance Certificate</x:String>
+                          </scg:List>
+                        </uix:NSelectItem.Items>
+                        <uix:NSelectItem.Target>
+                          <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/forms/loans/loan_documents.aspx" CvTextArea="844, 517, 64, 13" CvTextArgument="1003-1009" CvType="Text" DesignTimeRectangle="840, 513, 350, 22" DesignTimeScaleFactor="1" ElementType="DropDown" FriendlyName="'1003-1009'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;form&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;table' tableCol='1' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='SELECT' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='SELECT' class='' aaname='' /&gt;" Guid="367196ea-5f0a-4a30-ae21-0bfef7dfd4f9" InformativeScreenshot="3b27c35d113d0f902eaceca850a5f5bb.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Loan &amp;gt; Documents' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive">
+                            <uix:TargetAnchorable.Anchors>
+                              <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                <uix:Target CvTextArea="720, 517, 104, 16" CvTextArgument="Document Type:" CvType="Text" DesignTimeRectangle="720, 512, 105, 24" ElementType="Text" FriendlyName="'Document Type'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;form&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;table' tableCol='1' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='headerLabel' aaname='                                                     Document Type:                                                 ' check:innerText='Document Type:' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAG0AAAAcCAYAAABrhjEyAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIbSURBVGhD7ZbRbQIxDEA7SUfoTv3hgxEY4j4Qe4DEGsAYCLFEekdsx7GTy3GFtqZ+UqRewjm2Xy7qW3DM4dIM4tIM4tIM4tIM4tIM4tIM4tIM4tIMkkm7blfh/eNTjfUJfvDfuOzDotCPOFZhd4Hf/TBFaVwSzi22Z5h5PY5dW0CpN79FU1oI57BbDidrE44w80ocu2lfjTFpOJ8XFoutXxXVdbxyugNMHMJ6eF7uw7V/ohy2/GrqD8xpA3+n3xJ8Lcslxd6xfLA+3AvH2G2iegN78nfyA4B7b8L6duj5GiCu36zvhfjIHdLSvDyd4+viS50oDdfpWaxTMaK4uDfeChBbNTJJl7XUkDVSXRRLxpZ7j/chxmd5PFYaJENNH+BzujEZE6XVpJQl6WKzXCkXfdXPlyYarZqs+8BjqHjQl5Ikyf3Xo2r6AEuwuM6YKI1ymCRNj7j+XGm80TqOlsZzx3hq1PrGmPGPCCRTknabKyTLeYq0WtNlLg+WhvGWq1hTVrPuA49RjjeNtjTZtB5ZqHxPrsdnIR2LgfhzpY1LbEuL+82VluaznG7A3vSO2Fsc3mbdjKI0OWSiA7E5OHTRY+t5ofussc3kS8XAHI6Ub1saNW8YI1eTyguh92UP0t7pP1fxG753P0o1NaU5M8DG08FA5IF5HC7tm+AXqL8Il/YHwau2JsalOQyXZhCXZhCXZhCXZhCXZo4QvgB5y5ZJR5nicQAAAABJRU5ErkJggg==" SearchSteps="Selector, FuzzySelector" />
+                              </scg:List>
+                            </uix:TargetAnchorable.Anchors>
+                          </uix:TargetAnchorable>
+                        </uix:NSelectItem.Target>
+                      </uix:NSelectItem>
+                    </Sequence>
+                  </ActivityAction>
+                </ui:RetryScope.ActivityBody>
+                <ui:RetryScope.Condition>
+                  <ActivityFunc x:TypeArguments="x:Boolean" />
+                </ui:RetryScope.Condition>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:RetryScope>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DelayAfter="2" DisplayName="Click 'Choose File'" sap:VirtualizedContainerService.HintSize="1146,157" sap2010:WorkflowViewState.IdRef="NClick_4" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="c303e276-0eb8-4b3b-9387-548428848235" Version="V3">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/forms/loans/loan_documents.aspx" CvElementArea="846, 520, 89, 24" CvTextArea="854, 524, 177, 13" CvTextArgument="Choose File No file chosen" CvType="Button" DesignTimeRectangle="848, 521, 350, 21" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;form&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;table' tableCol='1' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='2' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='file' tag='INPUT' class='' aaname='' /&gt;" Guid="d0ffa25e-2e98-42b9-95e5-f1289d990be0" InformativeScreenshot="93c1f4f73d122df710b49dbdcb85b003.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Loan &amp;gt; Documents' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target CvTextArea="728, 521, 28, 13" CvTextArgument="File:" CvType="Text" DesignTimeRectangle="728, 520, 105, 23" ElementType="Text" FriendlyName="'File'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;form&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;table' tableCol='1' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='2' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='headerLabel' aaname='File:                                                                                   ' check:innerText='File:' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAG0AAAAbCAYAAAB2gwGKAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADdSURBVGhD7dbBDYJAEEZhK7EEe/LigRIsggOxEBLaAMswxCZGNwsEViBqRsmfvC/ZAzu4l5cN7gxyiCaIaIKIJohogpJotRWHo+1nVnGNbzR5eD5b2T4f2spOYZ7XcYi/mI+WVXbvdlJE297H0SaItgn3mxbn3Zqcc7MyC/sXa7odfMc12mTWnzUEJZqX9/6IjCIuR3sNHt8lkjfHm7YQfLh58OIfbeW38PH7b9pwFt80L67Rgjjv1zgQ0bwk0aCAaIKIJohogogmiGiCiCaIaIKIJohogogmiGhyzB6QEAPZ9JzilwAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector, CV" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NClick.Target>
+              </uix:NClick>
+              <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DelayAfter="3.5" DisplayName="Type Into 'Folder &amp; File Path'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="1146,218" sap2010:WorkflowViewState.IdRef="NTypeInto_3" InteractionMode="HardwareEvents" ScopeIdentifier="c303e276-0eb8-4b3b-9387-548428848235" Text="[in_strFolderFilePathUpload +&quot;[k(enter)]&quot;]" Version="V3">
+                <uix:NTypeInto.Target>
+                  <uix:TargetAnchorable CvElementArea="195, 382, 541, 25" CvType="InputBox" DesignTimeRectangle="201, 388, 514, 15" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'Edit'" FullSelectorArgument="&lt;wnd ctrlid='1148' /&gt;&lt;wnd ctrlid='1148' /&gt;&lt;wnd ctrlid='1148' /&gt;" FuzzySelectorArgument="&lt;wnd ctrlid='1148' /&gt;&lt;wnd ctrlid='1148' /&gt;&lt;wnd ctrlid='1148' /&gt;" Guid="350f9a60-3eb7-498b-b1a8-ba092ad7c6e5" InformativeScreenshot="8cf88e7d8a30b1e10b437ba62387c21b.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='#32770' title='Open' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target CvTextArea="137, 388, 55, 12" CvTextArgument="File name:" CvType="Text" DesignTimeRectangle="138, 387, 54, 15" ElementType="Text" FriendlyName="'File &amp;name'" FullSelectorArgument="&lt;wnd ctrlid='1090' title='File &amp;amp;name:' /&gt;" FuzzySelectorArgument="&lt;wnd ctrlid='1090' title='File &amp;amp;name:' check:text='File &amp;amp;name:' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADoAAAATCAYAAADBGB7WAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEASURBVFhH7VPRFcMgCHQq52EbhnEXZ3EDKokmaIkmTT8a68e9hwaOuwgmhED/gGl0NEyjo0EYdQTGkBGw6Cl4JGssoc85OX4WKqM9E9Poz+OEUXlf5SxjnUcdyBV1jJSPUK5D+u5gXxMDrqxxOze4QB6tyqFqcLGfRfI5J6K5o9zg2KiMIyJ5IUByZhMsoPVDNt5Yk4UuNcJcwXGggXPaRkWRei/i4k8mbK+i1SrnZGKF0qPHcUrDiptGtdeR6InM9Z7QKj0ucbRxY0c5rvblDTWnOMvxWgRrPXpnjhUNXx1d/laPzqXR5VdMdRYIPnlRPmsa2kbHxjQ6GqbRsRDoBaFqBwMxkChkAAAAAElFTkSuQmCC" SearchSteps="Selector, FuzzySelector, CV" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NTypeInto.Target>
+              </uix:NTypeInto>
+              <uix:NCheckState sap2010:Annotation.AnnotationText="Checks to see if 'File not found.' messages come up and if it does it annotes that the document was not found and continues the sequence. If it does not appear it annotes that the document was succuessfully uploaded and continues with sequence." DisplayName="Check App State 'Open'" sap:VirtualizedContainerService.HintSize="1146,1854" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="c303e276-0eb8-4b3b-9387-548428848235" Timeout="1" Version="V3">
+                <uix:NCheckState.IfExists>
+                  <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="546,1595" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'unchecked'" sap:VirtualizedContainerService.HintSize="484,157" sap2010:WorkflowViewState.IdRef="NClick_5" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="c303e276-0eb8-4b3b-9387-548428848235" Version="V3">
+                      <uix:NClick.Target>
+                        <uix:TargetAnchorable CvElementArea="455, 95, 68, 23" CvTextArea="480, 100, 18, 12" CvTextArgument="OK" CvType="Button" DesignTimeRectangle="455, 95, 68, 23" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'unchecked'" FullSelectorArgument="&lt;wnd aaname='Open' cls='DirectUIHWND' /&gt;&lt;wnd cls='Button' title='OK' /&gt;" FuzzySelectorArgument="&lt;wnd aaname='Open' cls='DirectUIHWND' /&gt;&lt;wnd cls='Button' title='OK' check:text='unchecked' /&gt;" Guid="2c4ecfdf-088f-47d5-9d29-681916ef8c48" InformativeScreenshot="cad5b6c122e627d69774b80d01d2ddf3.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='#32770' title='Open' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive" />
+                      </uix:NClick.Target>
+                    </uix:NClick>
+                    <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Cancel'" sap:VirtualizedContainerService.HintSize="484,157" sap2010:WorkflowViewState.IdRef="NClick_6" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="c303e276-0eb8-4b3b-9387-548428848235" Version="V3">
+                      <uix:NClick.Target>
+                        <uix:TargetAnchorable CvElementArea="847, 412, 89, 26" CvTextArea="872, 418, 37, 12" CvTextArgument="Cancel" CvType="Button" DesignTimeRectangle="847, 412, 88, 26" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'Cancel'" FullSelectorArgument="&lt;wnd ctrlid='2' title='Cancel' /&gt;" FuzzySelectorArgument="&lt;wnd ctrlid='2' title='Cancel' check:text='Cancel' /&gt;" Guid="7941ad42-c6e0-4b2f-a660-83cc1f8ac2fd" InformativeScreenshot="6fcdad0226ed62d862a5f569ac9f2ce7.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='#32770' title='Open' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                              <uix:Target CvElementArea="747, 412, 88, 26" CvTextArea="775, 418, 31, 15" CvTextArgument="Open" CvType="Button" DesignTimeRectangle="747, 412, 88, 26" ElementType="Button" FriendlyName="'unchecked'" FullSelectorArgument="&lt;wnd ctrlid='1' title='&amp;amp;Open' /&gt;" FuzzySelectorArgument="&lt;wnd ctrlid='1' title='&amp;amp;Open' check:text='unchecked' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFwAAAAeCAYAAAChf3k/AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEzSURBVGhD7ZbBEYQgDEXpiW6oZG+0QitUsWc7sIOsKChB3HFGN8LOP7xDMHB4gT+qcRwJyAHhwkC4MEy4er3BD2COWVFpBtdhjlkRG4ZhADcA4cJAuDAQLgyEC9OucGdIKbWira/3dUabwmfZmqxPa56s/g/pDQpf5BpXrHtLWhly+VqHtCf8UGwYRLr1jkx4AS70ViJnPiPFUTor7rFbVD3xYtoUri353bf85gd5k7TUNwsuhpHiaIqnRWzcY9y6vg1DjjaFn73ha8YP5EwcBrvdkVlyuWd/hgTtCT+V4aWsbM/hwCD8mN1zD3LyzC3q3TBq+Qzh3yn+w/mNX2QZo+vfy1hBpFzlGVl3AOHCQLgwnQrvFwgXBsKFOS0c3AtzzIpKM7gOc5wX4PdAuDAQLspIHzXPr3L4gVkTAAAAAElFTkSuQmCC" SearchSteps="Selector, FuzzySelector, CV" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NClick.Target>
+                    </uix:NClick>
+                    <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'INPUT'" sap:VirtualizedContainerService.HintSize="484,157" sap2010:WorkflowViewState.IdRef="NClick_8" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="c303e276-0eb8-4b3b-9387-548428848235" Version="V3">
+                      <uix:NClick.Target>
+                        <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/forms/loans/loan_documents.aspx" CvElementArea="967, 680, 75, 36" CvTextArea="981, 690, 46, 13" CvTextArgument="Cancel" CvType="Button" DesignTimeRectangle="964, 677, 80, 40" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;form&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;table' idx='2' tableCol='1' tableRow='1' tag='TABLE' /&gt;&lt;webctrl name='ctl00$ctl00$MainContent$ContentPlaceHolder1$ucLoanDocuments$btnC*' tableRow='1' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl name='ctl00$ctl00$MainContent$ContentPlaceHolder1$ucLoanDocuments$btnC*' type='image' tag='INPUT' class='' aaname='' /&gt;" Guid="d3a86914-be9b-4109-891e-896bb2ddbca1" InformativeScreenshot="f9e3836d41f0f316b38c1a9d59ef3cb2.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Loan &amp;gt; Documents' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                              <uix:Target CvElementArea="871, 680, 76, 35" CvTextArea="885, 690, 47, 16" CvTextArgument="Upload" CvType="Button" DesignTimeRectangle="869, 677, 80, 40" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;form&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;table' idx='2' tableCol='1' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='image' tag='INPUT' class='' aaname='' /&gt;" ImageBase64="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" SearchSteps="Selector, FuzzySelector, CV" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NClick.Target>
+                    </uix:NClick>
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,143" sap2010:WorkflowViewState.IdRef="LogMessage_18" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Document was not found.&quot;]" />
+                    <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope writing the row is complete" sap:VirtualizedContainerService.HintSize="484,706" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_7" InstanceCachePeriod="3000" WorkbookPath="[in_strIntiationLetterExcelUpload]">
+                      <ui:ExcelApplicationScope.Body>
+                        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+                          </ActivityAction.Argument>
+                          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,596" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                            <Sequence.Variables>
+                              <Variable x:TypeArguments="x:Int32" Name="RowIndex" />
+                            </Sequence.Variables>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:LookupDataTable CellValue="{x:Null}" LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" RowIndex="{x:Null}" TargetColumnIndex="{x:Null}" TargetColumnName="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[in_dtLDIDataUpload]" DisplayName="Lookup Data Table" sap:VirtualizedContainerService.HintSize="388,292" sap2010:WorkflowViewState.IdRef="LookupDataTable_1" LookupColumnName="ID" LookupValue="[CurrentRow(&quot;ID&quot;).ToString]">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:LookupDataTable>
+                            <ui:ExcelWriteCell Cell="[&quot;AA&quot;+( rowindex+2).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="388,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_1" SheetName="LDIData" Text="Document was NOT uploaded, sequence continued." />
+                            <ui:ExcelSaveWorkbook DisplayName="Save Workbook" sap:VirtualizedContainerService.HintSize="388,25" sap2010:WorkflowViewState.IdRef="ExcelSaveWorkbook_1" />
+                          </Sequence>
+                        </ActivityAction>
+                      </ui:ExcelApplicationScope.Body>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:ExcelApplicationScope>
+                  </Sequence>
+                </uix:NCheckState.IfExists>
+                <uix:NCheckState.IfNotExists>
+                  <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="546,1493" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="x:String" Default="[Now.ToString(&quot;yyyy-MM-dd HH:mm:ss&quot;)]" Name="strDateTime" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DelayAfter="0.5" DisplayName="Type Into 'Note Text'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="484,218" sap2010:WorkflowViewState.IdRef="NTypeInto_4" ScopeIdentifier="c303e276-0eb8-4b3b-9387-548428848235" Text="[in_strNoteTextUpload]" Version="V3">
+                      <uix:NTypeInto.Target>
+                        <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/forms/loans/loan_documents.aspx" CvElementArea="832, 580, 370, 68" CvType="InputBox" DesignTimeRectangle="835, 581, 366, 66" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'TEXTAREA'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;form&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;table' tableCol='1' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='5' tag='TEXTAREA' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='TEXTAREA' class='' aaname='' /&gt;" Guid="ab0f2e6b-a97a-4122-a1fc-f10273b2c1f0" InformativeScreenshot="848756666a0fd4f4b1d24da4aa6e4067.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Loan &amp;gt; Documents' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="2">
+                              <uix:Target CvTextArea="728, 581, 42, 13" CvTextArgument="Notes:" CvType="Text" DesignTimeRectangle="728, 580, 105, 71" ElementType="Text" FriendlyName="'Notes'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;form&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;table' tableCol='1' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='5' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='' aaname='Notes: ' check:innerText='Notes:' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAG0AAABLCAYAAAB6DQl9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHUSURBVHhe7dbNbcIwAEDhTsII7MSFAyN0CA6IPYjEGsAYCLGEmx+HJE4c2oqqeuI9yQccJUj+cMxHMFyiARMNmGjARAOWoJ3CbrkKi+VnKG5xqux++CznVmF3iRP2r2XQyrE9xblfot2OYd17hr2uPFoP6cdoFVj1DNH+pFm0xeYY7uXsJFoL044HUPKM5T6c6/lrKDa9+QFo7p6q9r7+3Hs3jVZiFdtmASuoEdpoJ3X3Vcjj68nCx+vrw7W+eq6/a3gte6/l0e6PX/8+FAlagzj1ZyXOpQufg4jIDVozvv0KfuNm0Lodli5os8gz/zBzaKOR7K7eaHehjZtFe3yO43U7LV/3Qxk+37qeoJVd9nERe6+uEUIGO30dTp5b4zNrcMZ5po16jvZYtOS8SV9pyS7qzql2x3TPqUfmO4b3VImWlqAZIdGAiQZMNGCiARMNmGjARAMmGjDRgIkGTDRgogETDZhowEQDJhow0YCJBkw0YKIBEw2YaMBEAyYaMNGAiQZMNGCiARMNmGjARAMmGjDRgIkGTDRgogETDZhowEQDJhow0YCJBkw0YKIBEw2YaMBEAyYaMNGAiQZMNGCiARMNmGjARAMmGjDRgIkGTDRcIXwBADz51PKV4qgAAAAASUVORK5CYII=" SearchSteps="FuzzySelector, CV" />
+                              <uix:Target CvTextArea="897, 430, 118, 17" CvTextArgument="Upload Document" CvType="Text" DesignTimeRectangle="721, 427, 469, 22" ElementType="Text" FriendlyName="'Upload Document'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;form&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table' tableCol='2' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='' aaname='Upload Document' check:innerText='Upload Document' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAdkAAAAaCAYAAAD7TCasAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKuSURBVHhe7doxbsMgFMbxXqB36o2y5x49QG+QqXO2bpmrbtkyRqrUlZoChvcgxk5DpOA/0k8qxjbPROKL1Tw9v2wMAAC4PUIWAIBGCFkAABohZAEAaISQBQCgEUIWAIBGCFkAABohZAEAaISQRVe2hx9j2+d7evzDfNqD319mm5w75e1oL/gx+9fy+L+8n+zNzfmwK467uXVrVAuApghZdKWfkJVzh+CVz9WT4TNa8PkAj4KQRVd6DdlrnuFx9PxsWDtCFl2ZF7KhfxrenuwftpXeHNNj/prQdCD44Bzb8SOOvezMPp3ncE3IhuMn8zYeq9Q0MZ6tkwr+cfzwZc5/f9k2zJ0+p5rP1eebGIvrv0/OcXOna2Nb/tzAIyNk0ZVFITtu6GGjjwEmg05fr85/dUGUBZSvQfZjqFwXsjNr0uO+xhD+c0NWnx/uF/rh/GJt4xcNvd66dt0H+kHIoitZePypb+r6OhEaPoDEPSeOhebG8gDXgabNCtlaTZU5snVS5+sQze4n+vl6ulovBH7tCwHQEUIWXbk2ZHWIpIFWvGd6fnhLLJ5fn0ubDlkXTLWayusQZeOqptq47PtnzFp4Br0GhCzWg5BFX/zmL8NFb+L5pq5DZclbo75W9m/1JqtqrtRUm6NJyF4MST1OyGI9CFl0prBhZ4HjzxnapSCUQTcdEiGQROAMLQRUOXTTeqRSyGahV6kpH/f98H9StSZuzthfFrK19arV6vvjONAPQhYd8pt60mSgxU0//tpVhloedOqeIhBicNp2Pp7ED6Hi/Wwb7jnr18W6yfqcqZpq42nNeU1LQ9aSdccvLOl6l0M2zmdb/CIBPD5CFiukN30AaIOQxQoRsgDug5DFChGyAO6DkAUAoBFCFgCARghZAAAaIWQBAGiEkAUAoImN+QVG91QmQPcqowAAAABJRU5ErkJggg==" SearchSteps="Selector, FuzzySelector, CV" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NTypeInto.Target>
+                    </uix:NTypeInto>
+                    <uix:NClick ActivateBefore="True" ClickType="Single" DelayAfter="0.5" DisplayName="Click 'Upload'" sap:VirtualizedContainerService.HintSize="484,193" sap2010:WorkflowViewState.IdRef="NClick_7" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="c303e276-0eb8-4b3b-9387-548428848235" Version="V3">
+                      <uix:NClick.Target>
+                        <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/forms/loans/loan_documents.aspx" CvElementArea="880, 680, 77, 35" CvTextArea="895, 689, 46, 17" CvTextArgument="Upload" CvType="Button" DesignTimeRectangle="878, 677, 80, 40" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;form&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;table' idx='2' tableCol='1' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='image' tag='INPUT' class='' aaname='' /&gt;" Guid="8d95c5e0-3359-4f6e-839d-7c327a94974e" InformativeScreenshot="7ac346e3dd29c631190c8f635f828591.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Loan &amp;gt; Documents' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                      </uix:NClick.Target>
+                      <uix:NClick.VerifyOptions>
+                        <uix:VerifyExecutionOptions DisplayName="Label 'Upload Document'" Mode="Disappears">
+                          <uix:VerifyExecutionOptions.Retry>
+                            <InArgument x:TypeArguments="x:Boolean" />
+                          </uix:VerifyExecutionOptions.Retry>
+                          <uix:VerifyExecutionOptions.Target>
+                            <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/forms/loans/loan_documents.aspx" CvTextArea="897, 430, 118, 17" CvTextArgument="Upload Document" CvType="Text" DesignTimeRectangle="721, 427, 469, 22" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Upload Document'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;form&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table' tableCol='2' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='' aaname='Upload Document' check:innerText='Upload Document' /&gt;" Guid="2a732c73-d5d9-43f2-a966-33a9c8671500" InformativeScreenshot="89f0d78f55c85eb10b63f70dc9779ac2.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Loan &amp;gt; Documents' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                              <uix:TargetAnchorable.Anchors>
+                                <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                  <uix:Target CvTextArea="729, 465, 122, 16" CvTextArgument="Upload Document" CvType="Text" DesignTimeRectangle="730, 456, 473, 29" ElementType="Text" FriendlyName="'Upload Document'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;form&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table' idx='2' tableCol='2' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='DIV' class='hermit-subHeading' aaname='Upload Document' check:innerText='Upload Document' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAd0AAAAhCAYAAACcGnG4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMaSURBVHhe7dvbTeNAFAbgNLA9bQ1I1LEtrBAFpAUeSAe0sLzRBA+U4Y3juXls42DIALvfJ52H+DJzPJb8y4Hsfvz81SmllFLq8iV0lVJKqUa16wCAJoQuADQidAGgEaELAI0IXQBoROgCQCNCFwAaEboA0IjQBYBGhC4ANCJ0AaCRInT/dHe7Xfd7d9s9hS2Dl+7hut9+1T08h01rnu+7fT/W9f3x7At5vD32tOv2h/kZnm76nmfq5k844l/X37c33DMALu7/C92+LtnXl7DhngFwcRtCNx/3cLgaQqyv8g1yLnTjtrnjeyFEc9V9xHnDvjND9+4xbDjJY4zOW+strUGouesqtr2EdRnmLtbvkK9xmL8ct7reqqey3zj+/nBfrEm8P1Wvp+OKawXg07wjdKeVHu51ENWhFmttfwq/aZDEWgqU+dA9iuEex17rbWnuuvfV0K3rqtvX21d6itcSx5/UqQehC/BVvSt0U6DFIFsIohiA+eGfg2ESir06yNJbcO5tOubYYui+tbf62tL+sB5vCN04R5xzcn3h8/j8Xljzan86P4V0XJ/6ngHwFWwP3SJk8jHh3FEQLYwbgmYcmjnQ50JodOzs+dl5obve2+zcpbNDNwfgZMxqjBTKkxr6nPZUrf/MnAB8vnf9TTcf91ro1oEQlKFZB1f1+UNDN5w3fJW73tuW0B3PPQ3A7aE7jCF0Ab6nInTjg7oKmBhS6YGe30ZToMVjFkIzhsg0JIYxJiFSjzfpYaHXwnzojuftrfU2nbsaO17r4vrE8c4P3bh/3HsmdAG+pyJ088N8ttI/NeVQqWspRHIwVVWFzNL+HCLTWgvd2UrjHq30tjh32r+8HltDd7GncA/OD93xeQB8rlHonqQ3u1zjYMtfL3/cT4bGIdGH1RCa5ZtaGW7H7eHnN28O3bkAerW3Xh28+a33pFyz4zU/hXXZHLq9uqdi33roHpU9CV2AL2Eauqty6I6CBwB4ldAFgEaELgA0siF0AYAthC4ANCJ0AaARoQsAjaTQTb/pVEoppdSHVuRNFwAaEboA0ETX/QXloyn9N0e0cQAAAABJRU5ErkJggg==" SearchSteps="Selector, FuzzySelector, CV" />
+                                </scg:List>
+                              </uix:TargetAnchorable.Anchors>
+                            </uix:TargetAnchorable>
+                          </uix:VerifyExecutionOptions.Target>
+                          <uix:VerifyExecutionOptions.Timeout>
+                            <InArgument x:TypeArguments="x:Double" />
+                          </uix:VerifyExecutionOptions.Timeout>
+                        </uix:VerifyExecutionOptions>
+                      </uix:NClick.VerifyOptions>
+                    </uix:NClick>
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,143" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Document was found successfully.&quot;]" />
+                    <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope writing the row is complete" sap:VirtualizedContainerService.HintSize="484,706" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_8" InstanceCachePeriod="3000" WorkbookPath="[in_strIntiationLetterExcelUpload]">
+                      <ui:ExcelApplicationScope.Body>
+                        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+                          </ActivityAction.Argument>
+                          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,596" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                            <Sequence.Variables>
+                              <Variable x:TypeArguments="x:Int32" Name="RowIndex" />
+                            </Sequence.Variables>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:LookupDataTable CellValue="{x:Null}" LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" TargetColumnIndex="{x:Null}" TargetColumnName="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[in_dtLDIDataUpload]" DisplayName="Lookup Data Table" sap:VirtualizedContainerService.HintSize="388,292" sap2010:WorkflowViewState.IdRef="LookupDataTable_2" LookupColumnName="ID" LookupValue="[CurrentRow(&quot;ID&quot;).ToString]" RowIndex="[RowIndex]">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:LookupDataTable>
+                            <ui:ExcelWriteCell Cell="[&quot;AA&quot;+( rowindex+2).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="388,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_2" SheetName="LDIData" Text="[strDateTime]" />
+                            <ui:ExcelSaveWorkbook DisplayName="Save Workbook" sap:VirtualizedContainerService.HintSize="388,25" sap2010:WorkflowViewState.IdRef="ExcelSaveWorkbook_2" />
+                          </Sequence>
+                        </ActivityAction>
+                      </ui:ExcelApplicationScope.Body>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:ExcelApplicationScope>
+                  </Sequence>
+                </uix:NCheckState.IfNotExists>
+                <uix:NCheckState.Target>
+                  <uix:TargetAnchorable CvElementArea="10, 33, 37, 36" CvTextArea="24, 44, 8, 21" CvType="Icon" DesignTimeRectangle="13, 36, 32, 32" DesignTimeScaleFactor="1" ElementType="Icon" FriendlyName="'MainInstructionIcon'" FullSelectorArgument="&lt;wnd aaname='Open' cls='DirectUIHWND' /&gt;&lt;ctrl name='Open' role='pane' /&gt;&lt;ctrl name='MainInstructionIcon' role='graphic' /&gt;" FuzzySelectorArgument="&lt;wnd aaname='Open' cls='DirectUIHWND' /&gt;&lt;ctrl name='Open' role='pane' /&gt;&lt;ctrl name='MainInstructionIcon' role='graphic' automationid='' check:text='MainInstructionIcon' /&gt;" Guid="251cdce5-542e-49cb-a44b-464b9d91a5d7" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFDSURBVFhH3dJLCsIwFIXhLMWduw7BiQtwKA5FcBnVeK9p6Cv3mVSLgTOwgv35TIgbO38a9NinNThtgk67tAanPghljvAzuAZK9UEg8zqHz1oo1QX1Ot0trYVSXVCv093TWij5g8Y6fVALJX/QTCevVskXVNLJq1TyBRE6eTVK9iBOJ69CyR4k6OR5lWxBhE4IaeNnXiVbEKFTDIJ5lPRBzN2hgjxK+iDm7pBBMKuSLojRwXFBViVdEKODY4NgFiU5SNDBSUEWJTlI0MGJQTCtEh+k0MFpgrRKfJBCB6cKgmmU6CClDk4bpFGig5Q6OHUQTFIqBxl0zBOUykEGHc84pWWQQ8fyl33GKC2DHDrmIBilNA1a8+7MRyhNg1a+O/OVlIYgLD2E+LzArl8avAvfOVYagrAUv/zFRkrwaVtnY0ExvgE0JZ4QRhV4zAAAAABJRU5ErkJggg==" InformativeScreenshot="7d7a48c64b2d551af670248e9e4b5a16.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='#32770' title='Open' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target CvTextArea="5, 6, 30, 15" CvTextArgument="Open" CvType="Text" DesignTimeRectangle="5, 6, 30, 15" ElementType="Text" FriendlyName="'Open'" SearchSteps="CV" TargetType="ComputerVisionBased" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NCheckState.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </uix:NCheckState>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Home'" sap:VirtualizedContainerService.HintSize="1146,157" sap2010:WorkflowViewState.IdRef="NClick_9" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="c303e276-0eb8-4b3b-9387-548428848235" Version="V3">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/forms/loans/loan_documents.aspx" CvTextArea="40, 209, 35, 12" CvTextArgument="Home" CvType="Text" DesignTimeRectangle="41, 209, 33, 14" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Home'" FullSelectorArgument="&lt;webctrl tableRow='21' tag='TABLE' /&gt;&lt;webctrl aaname='Home' tableRow='1' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aaname='Home' type='' tag='SPAN' class='' check:innerText='Home' /&gt;" Guid="30eea76b-77ad-4de5-b164-1f9670c88fc5" InformativeScreenshot="592052db551b69dd7ef72e0b43aa2f88.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Loan &amp;gt; Documents' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target CvTextArea="26, 176, 32, 13" CvTextArgument="Loan" CvType="Text" DesignTimeRectangle="28, 176, 30, 15" ElementType="Text" FriendlyName="'Loan'" FullSelectorArgument="&lt;webctrl id='mainTable' tag='TABLE' /&gt;&lt;webctrl aaname='Loan' tableRow='1' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl id='mainTable' tag='TABLE' /&gt;&lt;webctrl aaname='Loan' type='' tag='A' class='' check:innerText='Loan' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACIAAAATCAYAAAD1Yd/KAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADYSURBVEhL7ZM7DoMwEERzgdwpJ8hJIlGk4wqpfQCqtFTUdHTUiI7OpSUktxMwtvAuER8lIRQeaQprvLvPBp/OlwhHcADhPh5IXGqgrRF74Z4OINwbQApUGFVlNE8aGxhp5MJmmezWEpWXqzIltb1XgqTIW6+Bac6GebUGqim8vTO11utARA1FihkY8ZBREInE5ZNeg9eB8GYcxDR30lA/A1m4EfIp+PqrIAv/iBnsat3tfATyRuPrmHk1bnivDijxD7UV5N82ILfHczjNzrreBQU5ggMIdYQXlheBg2gqmjYAAAAASUVORK5CYII=" SearchSteps="Selector, FuzzySelector, CV" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NClick.Target>
+              </uix:NClick>
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1146,143" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;The 'Upload Document' sequence has completed successfully and the 'Notes for Loan' sequence has begun.&quot;]">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:LogMessage>
+            </Sequence>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="1912, -8, 1936, 1056" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="033a0bbb992a20c664d88598c3d064af.jpg" Selector="&lt;html app='chrome.exe' title='Loan &amp;gt; Documents' /&gt;" Title="Loan &gt; Loan Balance" Url="[in_strDocumentsPageURLUpload]" />
+      </uix:NApplicationCard.TargetApp>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>

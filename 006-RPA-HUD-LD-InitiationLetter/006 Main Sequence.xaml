@@ -1,0 +1,210 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1233,1513" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Word.Activities.Design</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="450,1448" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Default="S:\UiPath Data Files\006-RPA-HUD-LD-IntiationLetter-Template.xlsx" Name="str006TempExcePathMain" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtLDIDataMain" />
+      <Variable x:TypeArguments="x:String" Default="[&quot;D:\Users\&quot; + Environment.UserName + &quot;\Credentials\Credential Vault.xlsx&quot;]" Name="strDDriveVaultExcelPathMain" />
+      <Variable x:TypeArguments="x:String" Default="hermitsp.com/default.aspx" Name="strHERMITHomePageURLMain" />
+      <Variable x:TypeArguments="x:String" Name="strPayPlanTypeMain" />
+      <Variable x:TypeArguments="x:String" Default="[&quot;C:\Users\&quot; + Environment.UserName + &quot;\Credentials\Credential Vault.xlsx&quot;]" Name="strCDriveVaultExcelPathMain" />
+      <Variable x:TypeArguments="x:String" Default="https://www.hermitsp.com/forms/loans/loan_documents.aspx" Name="strDocumentsPageURLMain" />
+      <Variable x:TypeArguments="x:String" Default="S:\LOSS DRAFT SCAN\...DataFileForScript\Archive\" Name="strLossDraftScanFolderPathMain" />
+      <Variable x:TypeArguments="x:String" Default="S:\Document Management Department\BatchPrint\BOTs\" Name="strBOTFolderPathMain" />
+      <Variable x:TypeArguments="x:String" Default="S:\LOSS DRAFT SCAN\...DataFileForScript\Archive\" Name="strArchiveFolderMain" />
+      <Variable x:TypeArguments="x:String" Name="strInitiationLetterFolderPathMain" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtLDIFormMain" />
+      <Variable x:TypeArguments="x:String" Name="strDynamicArchivePathOnlyMain" />
+      <Variable x:TypeArguments="x:String" Default="S:\LOSS DRAFT SCAN\...DataFileForScript\" Name="strDataFileForScriptFolderPathMain" />
+      <Variable x:TypeArguments="x:String" Name="strModifiedFHAMain" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtLDIDataCompleteMain" />
+      <Variable x:TypeArguments="x:Int32" Name="RowIndex" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Create Check Request Folder.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="Create Check Request Folder.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="In_BOTFolderPathCreate">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strBOTFolderPathMain" />
+        </InArgument>
+        <InOutArgument x:TypeArguments="x:String" x:Key="out_strInitiationLetterFolderPathCreate">
+          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="strInitiationLetterFolderPathMain" />
+        </InOutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strArchiveFolderPathCreate">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strArchiveFolderMain" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strModFHACreate">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strModifiedFHAMain" />
+        </InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_strDynamicArchiveFullPathCreate">
+          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="strDynamicArchivePathOnlyMain" />
+        </OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="File To Process.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="File To Process.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strDataFileForScriptFolderPath">[strDataFileForScriptFolderPathMain]</InArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtLDIToProcess">[dtLDIFormMain]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strDynamicArchiveFolderPrep">[strDynamicArchivePathOnlyMain]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Prep Template For Use.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="Prep Template For Use.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strLossDraftScanFolderPathPrep">[strLossDraftScanFolderPathMain]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strInitiationLetterFolderPathPrep">[strInitiationLetterFolderPathMain]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str006ExcelTempPrep">[str006TempExcePathMain]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strDynamicArchiveFolderPrep">[strDynamicArchivePathOnlyMain]</InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtLDIDataProcessPrep">[dtLDIFormMain]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Read Intiation Letter Excel File.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Read Intiation Letter Excel File.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtLDIDataRead">[dtLDIDataMain]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strSourceExcelPathRead">[str006TempExcePathMain]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Fill Out Form.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Fill Out Form.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_006ExcelTempFill">[str006TempExcePathMain]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strInitiationLetterFolderPathFill">[strInitiationLetterFolderPathMain]</InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtLDIDataFill">[dtLDIDataMain]</InArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtLDIDataCompleteFill">[dtLDIDataCompleteMain]</OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Log into HERMIT.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Log into HERMIT.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strCDriveVaultExcelPathLog">[strCDriveVaultExcelPathMain]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_stDDriveVaultExcelPathLog">[strDDriveVaultExcelPathMain]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strHERMITLogInURLLog">[strHERMITHomePageURLMain]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Loop.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Loop.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="io_HERMITHomePageLoop">[strHERMITHomePageURLMain]</InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="io_dtLDIDataLoop">[dtLDIDataMain]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="io_strIntiationLetterExcelLoop">[str006TempExcePathMain]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="io_strPayPlanTypeLoop">[strPayPlanTypeMain]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strDocumentsPageURLLoop">[strDocumentsPageURLMain]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="io_strModifiedFHALoop">[strModifiedFHAMain]</OutArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtLDIDataCompleteLoop">[dtLDIDataCompleteMain]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="RowIndex">[RowIndex]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Email Group.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Email Group.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str006ExcelEmail">[str006TempExcePathMain]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_DyamicLDIFolder">[strInitiationLetterFolderPathMain]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="RowIndex">[RowIndex]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Clear LDIData Template.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="Clear LDIData Template.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SourceExcelFileClear">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="str006TempExcePathMain" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_DynamicLDIFolder">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strInitiationLetterFolderPathMain" />
+        </InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+  </Sequence>
+</Activity>
